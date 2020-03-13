@@ -9,8 +9,6 @@
 require 'json'
 require 'open-uri'
 
-require 'pry-byebug'
-
 puts "Seed started"
 
 Ingredient.destroy_all
