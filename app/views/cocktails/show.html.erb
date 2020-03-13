@@ -6,3 +6,5 @@
   <% ingredient = Ingredient.find(dose.ingredient_id) %>
   <p><%= ingredient.name %><%= dose.description %></p>
 <% end %>
+
+<%= link_to "Add a new ingredient", new_cocktail_dose_path(params[:id]) %>

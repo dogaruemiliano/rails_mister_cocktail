@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+  <h3>New dose</h3>
+
+    <%= simple_form_for ([@cocktail, @dose]) do |f|%>
+      <%= f.input :description %>
+      <%= f.association :ingredient, collection: Ingredient.all %>
+      <%= f.submit class: 'btn btn-warning'%>
+    <% end %>
+    </div>
+  </div>
+</div>
