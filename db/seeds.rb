@@ -9,6 +9,8 @@
 require 'json'
 require 'open-uri'
 
+require 'pry-byebug'
+
 puts "Seed started"
 
 Ingredient.destroy_all
@@ -24,8 +26,8 @@ ingredients = JSON.parse(raw_data)['drinks']
 puts "Done parsing data from the server"
 
 ingredients.each do |ingredient_hash|
-  ingredient = ingredient_hash['strIngredient']
-  Ingredient.create(name: ingredient)
+  ingredient = ingredient_hash['strIngredient1']
+  Ingredient.create!(name: ingredient)
 end
 
 puts "Done seeding the ingredients"
