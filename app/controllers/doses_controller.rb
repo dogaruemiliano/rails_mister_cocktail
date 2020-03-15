@@ -7,16 +7,15 @@ class DosesController < ApplicationController
 
   def create
     @dose = Dose.new(params_dose)
-    raise
-    # @ingredient = @dose.ingredient
-    @ingredient = Ingredients.new(@dose.ingredient_id)
+    @dose.cocktail_id = params[:cocktail_id] # or the other version of code
+    @ingredient = Ingredient.find(@dose.ingredient_id)
+    # @cocktail = Cocktail.find(params[:cocktail_id])
+    # @dose.cocktail = @cocktail
 
     if @dose.save
-      # raise
-      redirect_to(cocktail_path(@dose.ingredient_id))
-      # redirect_to(cocktail_path(@ingredient))
+      redirect_to(cocktail_path(@dose.cocktail_id))
     else
-      render :new
+      render :new, notice: "Something went wrong!"
     end
   end
 
@@ -28,6 +27,6 @@ class DosesController < ApplicationController
   private
 
   def params_dose
-    params.require(:dose).permit(:description, :ingredient_id)
+    params.require(:dose).permit(:description, :ingredient_id, :cocktail_id)
   end
 end
