@@ -12,7 +12,7 @@ class DosesController < ApplicationController
     @ingredient = Ingredients.new(@dose.ingredient_id)
 
     if @dose.save
-      raise
+      # raise
       redirect_to(cocktail_path(@dose.ingredient_id))
       # redirect_to(cocktail_path(@ingredient))
     else
